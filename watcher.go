@@ -210,11 +210,11 @@ func (w *Watcher) getMessages(psc *redis.PubSubConn) []interface{} {
 }
 
 func (w *Watcher) subscribe() error {
-	connWithTimeout, ok := w.subConn.(redis.ConnWithTimeout)
+	//	connWithTimeout, ok := w.subConn.(redis.ConnWithTimeout)
 	psc := redis.PubSubConn{Conn: w.subConn}
-	if ok {
-		psc.Conn = connWithTimeout
-	}
+	//	if ok {
+	//		psc.Conn = connWithTimeout
+	//	}
 
 	if err := psc.Subscribe(w.options.Channel); err != nil {
 		return err
