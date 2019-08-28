@@ -17,7 +17,6 @@ func TestWatcher(t *testing.T) {
 	c := redigomock.NewConn()
 	c.Clear()
 	c.ReceiveWait = true
-	c.Command("PUBLISH", "/casbin", "casbin rules updated").Expect("1")
 
 	values := []interface{}{}
 	values = append(values, interface{}([]byte("subscribe")))
@@ -30,6 +29,10 @@ func TestWatcher(t *testing.T) {
 	if err != nil {
 		t.Fatalf("Failed to connect to Redis: %v", err)
 	}
+
+	wi := w.(interface{})
+	rediswatch := wi.(*Watcher)
+	c.Command("PUBLISH", "/casbin", rediswatch.GetWatcherOptions().LocalID).Expect("1")
 
 	if err := w.Update(); err != nil {
 		t.Fatalf("Failed watcher.Update(): %v", err)
