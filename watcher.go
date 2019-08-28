@@ -1,12 +1,9 @@
 package rediswatcher
 
 import (
-	"net"
 	"reflect"
 	"runtime"
-	"strings"
 	"sync"
-	"time"
 
 	"fmt"
 
@@ -183,11 +180,13 @@ func (w *Watcher) connectSub(addr string) error {
 
 func (w *Watcher) getMessages(psc *redis.PubSubConn) []interface{} {
 	messages := make([]interface{}, 1)
-	messages[0] = psc.ReceiveWithTimeout(0)
-	for {
+	messages[0] = psc.Receive()
+	fmt.Printf("getMessages1 msgtype=%s\n", reflect.TypeOf(messages[0]).String())
+	fmt.Printf("getMessages1 msg=%+v\n", messages[0])
+	/*	for {
 		msg := psc.ReceiveWithTimeout(1 * time.Millisecond)
-		fmt.Printf("getMessages msgtype=%s\n", reflect.TypeOf(msg).String())
-		fmt.Printf("getMessages msg=%+v\n", msg)
+		fmt.Printf("getMessages2 msgtype=%s\n", reflect.TypeOf(msg).String())
+		fmt.Printf("getMessages2 msg=%+v\n", msg)
 		if msg != nil {
 			switch e := msg.(type) {
 			case redis.Message:
@@ -209,7 +208,7 @@ func (w *Watcher) getMessages(psc *redis.PubSubConn) []interface{} {
 		} else {
 			break
 		}
-	}
+	}*/
 	return messages
 }
 
