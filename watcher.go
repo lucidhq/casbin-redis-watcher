@@ -183,7 +183,7 @@ func (w *Watcher) connectSub(addr string) error {
 
 func (w *Watcher) getMessages(psc *redis.PubSubConn) []interface{} {
 	messages := make([]interface{}, 1)
-	messages[0] = psc.Receive()
+	messages[0] = psc.ReceiveWithTimeout(0)
 	for {
 		msg := psc.ReceiveWithTimeout(1 * time.Millisecond)
 		fmt.Printf("getMessages msgtype=%s\n", reflect.TypeOf(msg).String())
