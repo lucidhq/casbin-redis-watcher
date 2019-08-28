@@ -4,6 +4,7 @@ import (
 	"net"
 	"reflect"
 	"runtime"
+	"strings"
 	"sync"
 	"time"
 
@@ -191,8 +192,8 @@ func (w *Watcher) getMessages(psc *redis.PubSubConn) []interface{} {
 			switch e := msg.(type) {
 			case redis.Message:
 				messages = append(messages, msg)
-			case net.Error:
-				if !e.Timeout() { // if not a timeout error we need to return it
+			case net.OpError:
+				if !strings.Contains(e.Error(), "i/o timeout") { // if not a timeout error we need to return it
 					messages = append(messages, msg)
 				}
 				return messages
