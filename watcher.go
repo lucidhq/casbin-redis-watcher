@@ -198,6 +198,7 @@ func (w *Watcher) getMessages(psc *redis.PubSubConn) []interface{} {
 					return messages
 				}
 				messages = append(messages, msg)
+				return messages
 			default:
 				messages = append(messages, msg)
 			}
