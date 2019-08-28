@@ -1,9 +1,12 @@
 package rediswatcher
 
 import (
+	"net"
 	"reflect"
 	"runtime"
+	"strings"
 	"sync"
+	"time"
 
 	"fmt"
 
@@ -183,7 +186,7 @@ func (w *Watcher) getMessages(psc *redis.PubSubConn) []interface{} {
 	messages[0] = psc.Receive()
 	fmt.Printf("getMessages1 msgtype=%s\n", reflect.TypeOf(messages[0]).String())
 	fmt.Printf("getMessages1 msg=%+v\n", messages[0])
-	/*	for {
+	for {
 		msg := psc.ReceiveWithTimeout(1 * time.Millisecond)
 		fmt.Printf("getMessages2 msgtype=%s\n", reflect.TypeOf(msg).String())
 		fmt.Printf("getMessages2 msg=%+v\n", msg)
@@ -208,7 +211,7 @@ func (w *Watcher) getMessages(psc *redis.PubSubConn) []interface{} {
 		} else {
 			break
 		}
-	}*/
+	}
 	return messages
 }
 
