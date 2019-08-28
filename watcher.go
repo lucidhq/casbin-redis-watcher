@@ -2,6 +2,7 @@ package rediswatcher
 
 import (
 	"net"
+	"reflect"
 	"runtime"
 	"sync"
 	"time"
@@ -184,6 +185,8 @@ func (w *Watcher) getMessages(psc *redis.PubSubConn) []interface{} {
 	messages[0] = psc.Receive()
 	for {
 		msg := psc.ReceiveWithTimeout(1 * time.Millisecond)
+		fmt.Printf("getMessages msgtype=%s\n", reflect.TypeOf(msg).String())
+		fmt.Printf("getMessages msg=%+v\n", msg)
 		if msg != nil {
 			switch e := msg.(type) {
 			case redis.Message:
