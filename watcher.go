@@ -182,6 +182,7 @@ func (w *Watcher) connectSub(addr string) error {
 }
 
 func (w *Watcher) getMessages(psc *redis.PubSubConn) []interface{} {
+	fmt.Printf("getMessages\n")
 	messages := make([]interface{}, 1)
 	messages[0] = psc.Receive()
 	fmt.Printf("getMessages1 msgtype=%s\n", reflect.TypeOf(messages[0]).String())
@@ -216,11 +217,12 @@ func (w *Watcher) getMessages(psc *redis.PubSubConn) []interface{} {
 }
 
 func (w *Watcher) subscribe() error {
-	//	connWithTimeout, ok := w.subConn.(redis.ConnWithTimeout)
+	fmt.Printf("subscribe\n")
+	connWithTimeout, ok := w.subConn.(redis.ConnWithTimeout)
 	psc := redis.PubSubConn{Conn: w.subConn}
-	//	if ok {
-	//		psc.Conn = connWithTimeout
-	//	}
+	if ok {
+		psc.Conn = connWithTimeout
+	}
 
 	if err := psc.Subscribe(w.options.Channel); err != nil {
 		return err
