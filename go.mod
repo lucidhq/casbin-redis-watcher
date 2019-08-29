@@ -2,7 +2,7 @@ module github.com/lucidhq/casbin-redis-watcher/v2
 
 go 1.12
 
-replace github.com/garyburd/redigo => github.com/lucidhq/redigo v1.7.1-0.20190829001304-098b77cb642e
+replace github.com/garyburd/redigo/redis => github.com/lucidhq/redigo/redis v1.7.1-0.20190829001304-098b77cb642e
 
 require (
 	github.com/Knetic/govaluate v3.0.1-0.20171022003610-9aa49832a739+incompatible
