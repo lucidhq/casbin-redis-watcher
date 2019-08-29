@@ -9,5 +9,7 @@ github.com/google/uuid v1.1.1 h1:Gkbcsh/GbpXz7lPftLA3P6TYMwjCLYm83jiFQZF/3gY=
 github.com/google/uuid v1.1.1/go.mod h1:TIyPZe4MgqvfeYDBFedMoGGpEw/LqOeaOT+nhxU+yHo=
 github.com/lucidhq/redigo v1.7.1-0.20190828231037-563438194503 h1:OEEksAzYHPc7fRWdZ2ifG7gWVG4h+EvjCS8Mz06otXE=
 github.com/lucidhq/redigo v1.7.1-0.20190828231037-563438194503/go.mod h1:cLmLVMykcog+tDe734bRwz56pJnTeJd1RILwsfyatQY=
+github.com/lucidhq/redigo v1.7.1-0.20190829001304-098b77cb642e h1:PRJdveEJtQZ5qORleR3bI9zo//FGkcHyfPHAR13p5kI=
+github.com/lucidhq/redigo v1.7.1-0.20190829001304-098b77cb642e/go.mod h1:cLmLVMykcog+tDe734bRwz56pJnTeJd1RILwsfyatQY=
 github.com/rafaeljusto/redigomock v0.0.0-20170720131524-7ae0511314e9 h1:AgFSzGRVSy1kZ8EBHycQc6qK9gVqhJnVI2H/dk2cY/Y=
 github.com/rafaeljusto/redigomock v0.0.0-20170720131524-7ae0511314e9/go.mod h1:JaY6n2sDr+z2WTsXkOmNRUfDy6FN0L6Nk7x06ndm4tY=
