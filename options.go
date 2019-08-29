@@ -10,6 +10,7 @@ type WatcherOptions struct {
 	Protocol   string
 	IgnoreSelf bool
 	LocalID    string
+	SquashMessages bool
 }
 
 type WatcherOption func(*WatcherOptions)
@@ -53,5 +54,11 @@ func LocalID(id string) WatcherOption {
 func IgnoreSelf(ignore bool) WatcherOption {
 	return func(options *WatcherOptions) {
 		options.IgnoreSelf = ignore
+	}
+}
+
+func SquashMessages(squash bool)  WatcherOption {
+	return func(options *WatcherOptions) {
+		options.SquashMessages = squash
 	}
 }

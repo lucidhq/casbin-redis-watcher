@@ -1,10 +1,7 @@
 package rediswatcher
 
 import (
-	"net"
-	"reflect"
 	"runtime"
-	"strings"
 	"sync"
 
 	"fmt"
@@ -181,32 +178,22 @@ func (w *Watcher) connectSub(addr string) error {
 }
 
 func (w *Watcher) getMessages(psc *redis.PubSubConn) []interface{} {
-	fmt.Printf("getMessages\n")
 	messages := make([]interface{}, 1)
 	messages[0] = psc.Receive()
-	fmt.Printf("getMessages1 msgtype=%s\n", reflect.TypeOf(messages[0]).String())
-	fmt.Printf("getMessages1 msg=%+v\n", messages[0])
+	// only return 1 message at a time if SquashMessages not enabled
+	if !w.options.SquashMessages {
+		return messages
+	}
 	for {
 		if !psc.Peek() {
 			return messages
 		}
 		msg := psc.Receive()
-		fmt.Printf("getMessages2 msgtype=%s\n", reflect.TypeOf(msg).String())
-		fmt.Printf("getMessages2 msg=%+v\n", msg)
-		fmt.Printf("getMessages2 # messages=%d\n", len(messages))
 		if msg != nil {
-			switch e := msg.(type) {
+			switch msg.(type) {
 			case redis.Message:
 				messages = append(messages, msg)
-			case *net.OpError:
-				if !strings.Contains(e.Error(), "i/o timeout") { // if not a timeout error we need to return it
-					messages = append(messages, msg)
-				}
-				return messages
 			case error:
-				if e.Error() == "redis: connection does not support ConnWithTimeout" { // special case for unit test
-					return messages
-				}
 				messages = append(messages, msg)
 				return messages
 			default:
@@ -220,12 +207,7 @@ func (w *Watcher) getMessages(psc *redis.PubSubConn) []interface{} {
 }
 
 func (w *Watcher) subscribe() error {
-	fmt.Printf("subscribe\n")
-	connWithTimeout, ok := w.subConn.(redis.ConnWithTimeout)
 	psc := redis.PubSubConn{Conn: w.subConn}
-	if ok {
-		psc.Conn = connWithTimeout
-	}
 
 	if err := psc.Subscribe(w.options.Channel); err != nil {
 		return err
@@ -236,7 +218,6 @@ func (w *Watcher) subscribe() error {
 		doCallback := false
 		var data string
 		messages := w.getMessages(&psc) // get all available messages
-		fmt.Printf("Got %d messages\n", len(messages))
 		for _, msg := range messages {
 			switch n := msg.(type) {
 			case error:
@@ -255,7 +236,7 @@ func (w *Watcher) subscribe() error {
 			}
 		}
 		if doCallback {
-			w.callback(data)
+			w.callback(data) // data will be last message recieved
 		}
 	}
 }

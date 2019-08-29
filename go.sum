@@ -4,10 +4,14 @@ github.com/casbin/casbin/v2 v2.0.1 h1:yCfJYcr27iIGqag9IYASlW6VBKiWjJiLgQ4yLyIogS
 github.com/casbin/casbin/v2 v2.0.1/go.mod h1:YcPU1XXisHhLzuxH9coDNf2FbKpjGlbCg3n9yuLkIJQ=
 github.com/davecgh/go-spew v1.1.0 h1:ZDRjVQ15GmhC3fiQ8ni8+OwkZQO4DARzQgrnXU1Liz8=
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
+github.com/garyburd/redigo v1.6.0 h1:0VruCpn7yAIIu7pWVClQC8wxCJEcG3nyzpMSHKi1PQc=
+github.com/garyburd/redigo v1.6.0/go.mod h1:NR3MbYisc3/PwhQ00EMzDiPmrwpPxAn5GI05/YaO1SY=
 github.com/gomodule/redigo v2.0.0+incompatible h1:K/R+8tc58AaqLkqG2Ol3Qk+DR/TlNuhuh457pBFPtt0=
 github.com/gomodule/redigo v2.0.0+incompatible/go.mod h1:B4C85qUVwatsJoIUNIfCRsp7qO0iAmpGFZ4EELWSbC4=
 github.com/google/uuid v1.1.1 h1:Gkbcsh/GbpXz7lPftLA3P6TYMwjCLYm83jiFQZF/3gY=
 github.com/google/uuid v1.1.1/go.mod h1:TIyPZe4MgqvfeYDBFedMoGGpEw/LqOeaOT+nhxU+yHo=
+github.com/lucidhq/redigo v1.7.1-0.20190829170520-935f64d83747 h1:j1YqAUCxDDXI3S7+g32rNFrwyvKfkvgi4OLAovuYkI0=
+github.com/lucidhq/redigo v1.7.1-0.20190829170520-935f64d83747/go.mod h1:cLmLVMykcog+tDe734bRwz56pJnTeJd1RILwsfyatQY=
 github.com/lucidhq/redigo/redis v0.0.0-20190829002558-a3c3e364f680 h1:YYC4miyH49spL+Uz5ByIcqm/zNMb/KOJAaSTyF/j9n0=
 github.com/lucidhq/redigo/redis v0.0.0-20190829002558-a3c3e364f680/go.mod h1:c5wJMw/Oi+puocQ49/Bt48NwsrXqg3PobOmS1Rm7xrI=
 github.com/lucidhq/redigo/redis v0.0.0-20190829130808-8d833b12aa42 h1:ttR06l5GE591joJGZQQM8SnMhi65tg446Am3WUKkrDc=
