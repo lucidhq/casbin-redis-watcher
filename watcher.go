@@ -193,6 +193,7 @@ func (w *Watcher) getMessages(psc *redis.PubSubConn) []interface{} {
 		msg := psc.Receive()
 		fmt.Printf("getMessages2 msgtype=%s\n", reflect.TypeOf(msg).String())
 		fmt.Printf("getMessages2 msg=%+v\n", msg)
+		fmt.Printf("getMessages2 # messages=%d\n", len(messages))
 		if msg != nil {
 			switch e := msg.(type) {
 			case redis.Message:
@@ -235,6 +236,7 @@ func (w *Watcher) subscribe() error {
 		doCallback := false
 		var data string
 		messages := w.getMessages(&psc) // get all available messages
+		fmt.Printf("Got %d messages\n", len(messages))
 		for _, msg := range messages {
 			switch n := msg.(type) {
 			case error:

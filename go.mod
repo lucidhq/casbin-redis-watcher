@@ -2,7 +2,7 @@ module github.com/lucidhq/casbin-redis-watcher/v2
 
 go 1.12
 
-replace github.com/garyburd/redigo/redis => github.com/lucidhq/redigo/redis v0.0.0-20190829140109-82109fc26587
+replace github.com/garyburd/redigo/redis => github.com/lucidhq/redigo/redis v0.0.0-20190829141801-121ed0f52aea
 
 require (
 	github.com/casbin/casbin/v2 v2.0.1
