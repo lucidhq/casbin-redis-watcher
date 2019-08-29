@@ -6,7 +6,6 @@ import (
 	"runtime"
 	"strings"
 	"sync"
-	"time"
 
 	"fmt"
 
@@ -188,7 +187,10 @@ func (w *Watcher) getMessages(psc *redis.PubSubConn) []interface{} {
 	fmt.Printf("getMessages1 msgtype=%s\n", reflect.TypeOf(messages[0]).String())
 	fmt.Printf("getMessages1 msg=%+v\n", messages[0])
 	for {
-		msg := psc.ReceiveWithTimeout(1 * time.Millisecond)
+		if !psc.Peek() {
+			return messages
+		}
+		msg := psc.Receive()
 		fmt.Printf("getMessages2 msgtype=%s\n", reflect.TypeOf(msg).String())
 		fmt.Printf("getMessages2 msg=%+v\n", msg)
 		if msg != nil {

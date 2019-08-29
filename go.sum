@@ -12,6 +12,12 @@ github.com/lucidhq/redigo/redis v0.0.0-20190829002558-a3c3e364f680 h1:YYC4miyH49
 github.com/lucidhq/redigo/redis v0.0.0-20190829002558-a3c3e364f680/go.mod h1:c5wJMw/Oi+puocQ49/Bt48NwsrXqg3PobOmS1Rm7xrI=
 github.com/lucidhq/redigo/redis v0.0.0-20190829130808-8d833b12aa42 h1:ttR06l5GE591joJGZQQM8SnMhi65tg446Am3WUKkrDc=
 github.com/lucidhq/redigo/redis v0.0.0-20190829130808-8d833b12aa42/go.mod h1:c5wJMw/Oi+puocQ49/Bt48NwsrXqg3PobOmS1Rm7xrI=
+github.com/lucidhq/redigo/redis v0.0.0-20190829131840-717005e9fd4c h1:YXPRSv7Kg5up3axtQxX4as5as103wLHxrvrnVrtvJVw=
+github.com/lucidhq/redigo/redis v0.0.0-20190829131840-717005e9fd4c/go.mod h1:c5wJMw/Oi+puocQ49/Bt48NwsrXqg3PobOmS1Rm7xrI=
+github.com/lucidhq/redigo/redis v0.0.0-20190829132431-1f408bc13996 h1:5ZVvKsQRcPyDlrUT5wvekdpniJc5U0r3tdyhDNY53v0=
+github.com/lucidhq/redigo/redis v0.0.0-20190829132431-1f408bc13996/go.mod h1:c5wJMw/Oi+puocQ49/Bt48NwsrXqg3PobOmS1Rm7xrI=
+github.com/lucidhq/redigo/redis v0.0.0-20190829140109-82109fc26587 h1:dyjq7hOI3fmzeYBTen6WJLOd2o3o0P8wfLx/e6a7P+E=
+github.com/lucidhq/redigo/redis v0.0.0-20190829140109-82109fc26587/go.mod h1:c5wJMw/Oi+puocQ49/Bt48NwsrXqg3PobOmS1Rm7xrI=
 github.com/pmezard/go-difflib v1.0.0 h1:4DBwDE0NGyQoBHbLQYPwSUPoCMWR5BEzIk/f1lZbAQM=
 github.com/pmezard/go-difflib v1.0.0/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZNVY4sRDYZ/4=
 github.com/rafaeljusto/redigomock v0.0.0-20170720131524-7ae0511314e9 h1:AgFSzGRVSy1kZ8EBHycQc6qK9gVqhJnVI2H/dk2cY/Y=

@@ -8,13 +8,26 @@ import (
 	"github.com/rafaeljusto/redigomock"
 )
 
+type testConn struct {
+	redigomock.Conn
+}
+
+func (t *testConn) Peek() bool {
+	return false
+}
+
+func NewTestConn() *testConn {
+	tc := &testConn{*redigomock.NewConn()}
+	return tc
+}
 func TestWatcher(t *testing.T) {
 	if _, err := NewWatcher(""); err == nil {
 		t.Error("Connecting to nothing should fail")
 	}
 
 	// setup mock redis
-	c := redigomock.NewConn()
+	c := NewTestConn()
+
 	c.Clear()
 	c.ReceiveWait = true
 
@@ -55,7 +68,7 @@ func TestWatcher(t *testing.T) {
 
 func TestWithEnforcer(t *testing.T) {
 	// setup mock redis
-	c := redigomock.NewConn()
+	c := NewTestConn()
 	c.Clear()
 	c.ReceiveWait = true
 	c.Command("PUBLISH", "/casbin", "casbin rules updated").Expect("1")
